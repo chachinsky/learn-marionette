@@ -1,0 +1,25 @@
+{
+  "name": "learn-marionette",
+  "version": "1.0.0",
+  "authors": [
+    "Jose Medina <josemedina921@gmail.com>"
+  ],
+  "main": "app/index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "mustache": "~1.1.0",
+    "requirejs": "~2.1.16",
+    "text": "~2.0.14",
+    "marionette": "~2.4.1"
+  }
+}
