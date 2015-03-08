@@ -10,20 +10,34 @@ module.exports = function(grunt){
 		},
 		connect: {
 			server: {
-				options:{
+				options: {
 					port: 9000,
 					base: 'app',
-					keepalive: true,
+					hostname: 'localhost', 
+					livereload: 35729,
 					open: {
 						target: 'http://localhost:9000'
 					}
 				}		
+			}
+		},
+		watch: {
+			lintingtasks: {
+				files: ['app/scripts/**/*.js'],
+				tasks: ['jshint']
+			},
+			reloadfiles: {
+				files: ['app/**/*'],
+				options: {
+					livereload: true
+				}
 			}
 		}
 
 	});
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default', ['jshint', 'connect']);
+	grunt.registerTask('default', ['jshint', 'connect', 'watch']);
 };
