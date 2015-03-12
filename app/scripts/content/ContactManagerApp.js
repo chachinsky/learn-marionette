@@ -1,28 +1,31 @@
 define(function(require) {
   'use strict';
 
-  var Marionette = require('marionette');
-  var Templates = require('templates/Templates');
   var MainContainer = require('content/MainContainer');
-
-  var ContactManager = new Marionette.Application();
+  var ContactManager = require('content/ContactManager');
+  var Contact = require('content/Contact');
+  var ContactView = require('view/ContactView');
 
   ContactManager.addRegions({
     mainRegion: '#main-region'
   });
 
-  ContactManager.StaticView = Marionette.ItemView.extend({
-    template: Templates.Static
-  });
+  ContactManager.Contact = Contact;
+  ContactManager.ContactView = ContactView;
 
   ContactManager.on('start', function() {
-    new MainContainer().render();
-    var staticView = new ContactManager.StaticView({
-      tagName: 'ul',
-      template: Templates.DiffStatic
+    MainContainer.render();
+
+    var alice = new ContactManager.Contact({
+      firstName: 'Josie',
+      lastName: 'Medina'
     });
 
-    ContactManager.mainRegion.show(staticView);
+    var contactView = new ContactManager.ContactView({
+      model: alice
+    });
+
+    ContactManager.mainRegion.show(contactView);
 
   });
 

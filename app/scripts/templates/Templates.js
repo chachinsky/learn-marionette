@@ -4,7 +4,6 @@ define(function(require) {
   return {
     MainContainer: require('text!templates/MainContainerTemplate.html'),
     Navbar: require('text!templates/NavbarTemplate.html'),
-    Static: require('text!templates/StaticTemplate.html'),
-    DiffStatic: require('text!templates/DiffStaticTemplate.html')
+    Contact: require('text!templates/ContactTemplate.html')
   };
 });
