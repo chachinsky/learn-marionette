@@ -9,10 +9,12 @@ define(function(require) {
     template: Templates.Contact
   });
 
-  var Contacts = Marionette.CollectionView.extend({
+  var Contacts = Marionette.CompositeView.extend({
     tagName: 'table',
     className: 'table table-hover',
-    childView: Contact
+    template: Templates.ContactList,
+    childView: Contact,
+    childViewContainer: 'tbody'
   });
 
   return {
