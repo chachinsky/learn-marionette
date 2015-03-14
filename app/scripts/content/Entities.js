@@ -10,5 +10,13 @@ define(function(require) {
     }
   });
 
-  return Contact;
+  var ContactCollection = Backbone.Collection.extend({
+    model: Contact,
+    comparator: 'firstName'
+  });
+
+  return {
+    Contact: Contact,
+    ContactCollection: ContactCollection
+  };
 });

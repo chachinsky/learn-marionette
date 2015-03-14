@@ -13,13 +13,7 @@ require.config({
 define(function(require) {
   'use strict';
 
-  var Marionette = require('marionette');
-  var Mustache = require('mustache');
+  var App = require('main/App');
 
-  var ContactManager = require('content/ContactManagerApp');
-
-  Marionette.Renderer.render = function(template, data) {
-    return Mustache.render(template, data);
-  };
-  ContactManager.start();
+  App.start();
 });
