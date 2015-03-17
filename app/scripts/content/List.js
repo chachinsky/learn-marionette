@@ -6,7 +6,17 @@ define(function(require) {
 
   var Contact = Marionette.ItemView.extend({
     tagName: 'tr',
-    template: Templates.Contact
+    template: Templates.Contact,
+    events: {
+      'click': 'highlightName',
+      'click td': 'displayText'
+    },
+    highlightName: function() {
+      this.$el.toggleClass('warning');
+    },
+    displayText: function(e) {
+      alert($(e.target).text());
+    }
   });
 
   var Contacts = Marionette.CompositeView.extend({
