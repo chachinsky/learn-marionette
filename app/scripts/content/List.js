@@ -18,8 +18,11 @@ define(function(require) {
       alert($(e.target).text());
     },
     deleteBtn: function(){
-      this.model.collection.remove(this.model);
+      this.trigger('contact:delete', this.model);
       return false;
+    },
+    remove: function(){
+      this.$el.fadeOut(Marionette.ItemView.prototype.remove.bind(this));
     }
   });
 

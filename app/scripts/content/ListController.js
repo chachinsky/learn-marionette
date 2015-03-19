@@ -13,6 +13,10 @@ define(function(require) {
         collection: contacts
       });
 
+      contactsListView.on('childview:contact:delete', function(childview, model){
+        contacts.remove(model);
+      });
+
       ContactManager.mainRegion.show(contactsListView);
     }
   };
