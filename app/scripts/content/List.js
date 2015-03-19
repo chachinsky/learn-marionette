@@ -14,15 +14,9 @@ define(function(require) {
     highlightName: function() {
       this.$el.toggleClass('warning');
     },
-    displayText: function(e) {
-      alert($(e.target).text());
-    },
     deleteBtn: function(){
       this.trigger('contact:delete', this.model);
       return false;
-    },
-    remove: function(){
-      this.$el.fadeOut(Marionette.ItemView.prototype.remove.bind(this));
     }
   });
 
