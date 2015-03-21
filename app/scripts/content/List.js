@@ -9,13 +9,18 @@ define(function(require) {
     template: Templates.Contact,
     events: {
       'click': 'highlightName',
-      'click button': 'deleteBtn'
+      'click #del-btn': 'deleteBtn',
+      'click #show-btn': 'showClicked'
     },
     highlightName: function() {
       this.$el.toggleClass('warning');
     },
     deleteBtn: function(){
       this.trigger('contact:delete', this.model);
+      return false;
+    },
+    showClicked: function(){
+      this.trigger('contact:show', this.model);
       return false;
     }
   });
