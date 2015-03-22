@@ -1,9 +1,8 @@
 define(function(require) {
   'use strict';
 
-  require('main/RequestResponse');
   var List = require('content/List');
-  var ContactManager = require('content/ContactManager');
+  var ContactManager = require('main/ContactManager');
   var ShowController = require('content/ShowController');
 
   return {
@@ -19,6 +18,7 @@ define(function(require) {
       });
 
       contactsListView.on('childview:contact:show', function(childview, model){
+        ContactManager.trigger('contact:show', model.get('id'));
         ShowController.showContact(model);
       });
 

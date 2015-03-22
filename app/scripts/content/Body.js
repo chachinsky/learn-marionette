@@ -4,7 +4,7 @@ define(function(require) {
   var Backbone = require('backbone');
   var Templates = require('templates/Templates');
 
-  var MainContainer = Backbone.View.extend({
+  var Body = Backbone.View.extend({
     el: 'body',
     render: function() {
       this.$el.append(Templates.Navbar);
@@ -12,5 +12,5 @@ define(function(require) {
     }
   });
 
-  return new MainContainer();
+  return new Body();
 });

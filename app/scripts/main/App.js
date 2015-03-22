@@ -1,16 +1,21 @@
 define(function(require) {
   'use strict';
 
-  var ListController = require('content/ListController');
-  var ContactManager = require('content/ContactManager');
-  var MainContainer = require('main/MainContainer');
+  var Marionette = require('marionette');
+  var Mustache = require('mustache');
+  var Body = require('content/Body');
+  var ContactManager = require('main/ContactManager');
+  var ContactsRouter = require('main/ContactsRouter');
 
-  MainContainer.render();
+  Marionette.Renderer.render = function(template, data) {
+    return Mustache.render(template, data);
+  };
 
-  ContactManager.on('start', function() {
-    ListController.listContacts();
+  ContactManager.addInitializer(function(){
+  	ContactsRouter.initialize();
   });
 
-  return ContactManager;
+  Body.render();
 
+  return ContactManager;
 });
