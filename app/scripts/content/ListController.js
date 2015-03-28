@@ -14,7 +14,7 @@ define(function(require) {
       });
 
       contactsListView.on('childview:contact:delete', function(childview, model) {
-        contacts.remove(model);
+        model.destroy();
       });
 
       contactsListView.on('childview:contact:show', function(childview, model) {
