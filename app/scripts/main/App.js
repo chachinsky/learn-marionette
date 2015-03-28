@@ -11,8 +11,8 @@ define(function(require) {
     return Mustache.render(template, data);
   };
 
-  ContactManager.addInitializer(function(){
-  	ContactsRouter.initialize();
+  ContactManager.addInitializer(function() {
+    ContactsRouter.initialize();
   });
 
   Body.render();
