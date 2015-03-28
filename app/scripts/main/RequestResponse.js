@@ -3,10 +3,8 @@ define(function(require) {
 
   var Entities = require('content/Entities');
 
-  var contacts;
-
   var initializeContacts = function() {
-    contacts = new Entities.ContactCollection([{
+    var contacts = new Entities.ContactCollection([{
       id: 1,
       firstName: 'jose',
       lastName: 'medina',
@@ -32,17 +30,34 @@ define(function(require) {
       lastName: 'angel',
       phoneNumber: '123-121-1231'
     }]);
+
+    contacts.forEach(function(contact) {
+      contact.save();
+    });
+
+    return contacts;
   };
 
-    function getContactEntities() {
-      if (contacts === undefined) {
-        initializeContacts();
-      }
+  function getContactEntities() {
+    var contacts = new Entities.ContactCollection();
+    contacts.fetch();
 
-      return contacts;
+    if (contacts.length === 0) {
+      return initializeContacts();
     }
+    return contacts;
+  }
+
+  function getContactEntity(contactId) {
+    var contact = new Entities.Contact({
+      id: contactId
+    });
+    contact.fetch();
+    return contact;
+  }
 
   return {
-    getContactEntities: getContactEntities
+    getContactEntities: getContactEntities,
+    getContactEntity: getContactEntity
   };
 });

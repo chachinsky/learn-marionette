@@ -5,8 +5,11 @@ require.config({
     backbone: '../bower_components/backbone/backbone',
     text: '../bower_components/text/text',
     mustache: '../bower_components/mustache/mustache',
-    marionette: '../bower_components/marionette/lib/backbone.marionette'
-
+    marionette: '../bower_components/marionette/lib/backbone.marionette',
+    'backbone.localstorage': '../bower_components/backbone.localStorage/backbone.localStorage'
+  },
+  shim: {
+    'backbone.localstorage': ['backbone']
   }
 });
 

@@ -13,7 +13,6 @@ define(function(require) {
         contactView = new ShowMissingContact();
 
       } else {
-
         contactView = new ShowContact({
           model: model
         });
@@ -23,9 +22,8 @@ define(function(require) {
       ContactManager.mainRegion.show(contactView);
     },
     showContactById: function(id) {
-      var contacts = ContactManager.request('contact:entities');
-      var model = contacts.get(id);
-      this.showContact(model);
+      var contact = ContactManager.request('contact:entity', id);
+      this.showContact(contact);
     }
   };
 

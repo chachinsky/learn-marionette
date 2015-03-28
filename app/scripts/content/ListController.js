@@ -13,11 +13,11 @@ define(function(require) {
         collection: contacts
       });
 
-      contactsListView.on('childview:contact:delete', function(childview, model){
+      contactsListView.on('childview:contact:delete', function(childview, model) {
         contacts.remove(model);
       });
 
-      contactsListView.on('childview:contact:show', function(childview, model){
+      contactsListView.on('childview:contact:show', function(childview, model) {
         ContactManager.trigger('contact:show', model.get('id'));
         ShowController.showContact(model);
       });
