@@ -8,7 +8,7 @@ define(function(require){
 	var ContactsRouter = Marionette.AppRouter.extend({
 		appRoutes: {
 			'contacts': 'listContacts',
-			'contacts/:id' : 'showContact'
+			'contacts/:id' : 'showContactById'
 		},
 		routes: {
 			'' : 'defaultRoute'
@@ -23,7 +23,7 @@ define(function(require){
 		new ContactsRouter({
 			controller: {
 				listContacts : ListController.listContacts,
-				showContact : ShowController.showContactById
+				showContactById : ShowController.showContactById.bind(ShowController)
 			}
 		});
 	}
