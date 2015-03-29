@@ -1,9 +1,11 @@
 define(function(require) {
   'use strict';
 
+  var $ = require('jquery');
   var ShowContact = require('content/ShowContact');
   var ShowMissingContact = require('content/ShowMissingContact');
   var ContactManager = require('main/ContactManager');
+  var Loading = require('common/Loading');
 
   return {
     showContact: function(model) {
@@ -22,8 +24,13 @@ define(function(require) {
       ContactManager.mainRegion.show(contactView);
     },
     showContactById: function(id) {
-      var contact = ContactManager.request('contact:entity', id);
-      this.showContact(contact);
+      var fetchingContact = ContactManager.request('contact:entity', id);
+      Loading.show();
+
+      $.when(fetchingContact).done(function(contact) {
+        this.showContact(contact);
+      }.bind(this));
+
     }
   };
 

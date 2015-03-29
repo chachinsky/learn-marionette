@@ -4,25 +4,29 @@ define(function(require) {
   var List = require('content/List');
   var ContactManager = require('main/ContactManager');
   var ShowController = require('content/ShowController');
+  var Loading = require('common/Loading');
 
   return {
     listContacts: function() {
-      var contacts = ContactManager.request('contact:entities');
+      var fetchingContacts = ContactManager.request('contact:entities');
+      Loading.show('List Loading', 'will display in a moment');
 
-      var contactsListView = new List.Contacts({
-        collection: contacts
+      $.when(fetchingContacts).done(function(contacts) {
+        var contactsListView = new List.Contacts({
+          collection: contacts
+        });
+
+        contactsListView.on('childview:contact:delete', function(childview, model) {
+          model.destroy();
+        });
+
+        contactsListView.on('childview:contact:show', function(childview, model) {
+          ContactManager.trigger('contact:show', model.get('id'));
+          ShowController.showContact(model);
+        });
+
+        ContactManager.mainRegion.show(contactsListView);
       });
-
-      contactsListView.on('childview:contact:delete', function(childview, model) {
-        model.destroy();
-      });
-
-      contactsListView.on('childview:contact:show', function(childview, model) {
-        ContactManager.trigger('contact:show', model.get('id'));
-        ShowController.showContact(model);
-      });
-
-      ContactManager.mainRegion.show(contactsListView);
     }
   };
 

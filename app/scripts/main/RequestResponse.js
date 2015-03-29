@@ -1,6 +1,7 @@
 define(function(require) {
   'use strict';
 
+  var $ = require('jquery');
   var Entities = require('content/Entities');
 
   var initializeContacts = function() {
@@ -35,25 +36,52 @@ define(function(require) {
       contact.save();
     });
 
-    return contacts;
+    return contacts.models;
   };
 
   function getContactEntities() {
     var contacts = new Entities.ContactCollection();
-    contacts.fetch();
+    var defer = $.Deferred();
+    var promise;
 
-    if (contacts.length === 0) {
-      return initializeContacts();
-    }
-    return contacts;
+    setTimeout(function() {
+      contacts.fetch({
+        success: function(data) {
+          defer.resolve(data);
+        }
+      });
+    }, 1000);
+
+    promise = defer.promise();
+
+    $.when(promise).done(function(contacts) {
+      if (contacts.length === 0) {
+        var models = initializeContacts();
+        contacts.reset(models);
+      }
+    });
+
+    return promise;
   }
 
   function getContactEntity(contactId) {
     var contact = new Entities.Contact({
       id: contactId
     });
-    contact.fetch();
-    return contact;
+    var defer = $.Deferred();
+
+    setTimeout(function() {
+      contact.fetch({
+        success: function(data) {
+          defer.resolve(data);
+        },
+        error: function() {
+          defer.resolve();
+        }
+      });
+    }, 1000);
+
+    return defer.promise();
   }
 
   return {

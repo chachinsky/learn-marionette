@@ -6,10 +6,13 @@ require.config({
     text: '../bower_components/text/text',
     mustache: '../bower_components/mustache/mustache',
     marionette: '../bower_components/marionette/lib/backbone.marionette',
-    'backbone.localstorage': '../bower_components/backbone.localStorage/backbone.localStorage'
+    'backbone.localstorage': '../bower_components/backbone.localStorage/backbone.localStorage',
+    spin: '../bower_components/spinjs/spin',
+    'jquery.spin': '../bower_components/spinjs/jquery.spin'
   },
   shim: {
-    'backbone.localstorage': ['backbone']
+    'backbone.localstorage': ['backbone'],
+    'jquery.spin': ['jquery']
   }
 });
 

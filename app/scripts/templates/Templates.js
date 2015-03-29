@@ -7,6 +7,8 @@ define(function(require) {
     Contact: require('text!templates/ContactTemplate.html'),
     ContactList: require('text!templates/ContactListTemplate.html'),
     ContactView: require('text!templates/ContactView.html'),
-    MissingContactView: require('text!templates/MissingContactView.html')
+    MissingContactView: require('text!templates/MissingContactView.html'),
+    Loading: require('text!templates/Loading.html'),
+    ContactForm: require('text!templates/ContactForm.html')
   };
 });
