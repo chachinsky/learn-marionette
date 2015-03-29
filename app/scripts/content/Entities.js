@@ -2,6 +2,7 @@ define(function(require) {
   'use strict';
 
   var Backbone = require('backbone');
+  var _ = require('underscore');
   var LocalStorage = require('util/LocalStorage');
 
   var Contact = Backbone.Model.extend({
@@ -9,6 +10,18 @@ define(function(require) {
     defaults: {
       firstName: '',
       phoneNumber: 'No phone Number!'
+    },
+    validate: function(attrs, options) {
+      var errors = {};
+      if (!attrs.firstName) {
+        errors.firstName = 'can\'t be blank';
+      }
+      if (!attrs.lastName) {
+        errors.lastName = 'can\'t be blank';
+      }
+      if (!_.isEmpty(errors)) {
+        return errors;
+      }
     }
   });
 

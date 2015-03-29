@@ -22,6 +22,8 @@
     "text": "~2.0.14",
     "marionette": "~2.4.1",
     "bootstrap": "~3.3.2",
-    "json2": "*"
+    "json2": "*",
+    "backbone.syphon": "~0.6.0",
+    "spinjs": "~2.0.2"
   }
 }

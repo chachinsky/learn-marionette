@@ -13,8 +13,11 @@ define(function(require) {
     });
 
     view.on('form:submit', function(data) {
-      contact.save(data);
-      ContactManager.trigger('contact:show', contact.get('id'));
+      if (contact.save(data)) {
+        ContactManager.trigger('contact:show', contact.get('id'));
+      } else {
+        view.triggerMethod('form:data:invalid', contact.validationError);
+      }
     });
 
     return view;

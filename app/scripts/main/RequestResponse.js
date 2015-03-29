@@ -50,7 +50,7 @@ define(function(require) {
           defer.resolve(data);
         }
       });
-    }, 500);
+    }, 250);
 
     promise = defer.promise();
 
@@ -79,7 +79,7 @@ define(function(require) {
           defer.resolve();
         }
       });
-    }, 500);
+    }, 250);
 
     return defer.promise();
   }
