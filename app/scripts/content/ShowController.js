@@ -18,6 +18,10 @@ define(function(require) {
         contactView = new ShowContact({
           model: model
         });
+
+        contactView.on('contact:edit', function(contact) {
+          ContactManager.trigger('contact:edit', contact.get('id'));
+        });
       }
 
 

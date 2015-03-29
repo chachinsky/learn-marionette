@@ -1,6 +1,8 @@
 define(function(require) {
   'use strict';
 
+  require('backbone.syphon');
+  var Backbone = require('backbone');
   var Marionette = require('marionette');
   var Templates = require('templates/Templates');
 
@@ -10,8 +12,9 @@ define(function(require) {
       'click button.js-submit': 'submitClicked'
     },
     submitClicked: function() {
-      console.log('edit contact');
-
+      var data = Backbone.Syphon.serialize(this);
+      console.log(data);
+      this.trigger('form:submit', data);
       return false;
     }
   });

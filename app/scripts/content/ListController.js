@@ -1,9 +1,9 @@
 define(function(require) {
   'use strict';
 
+  var $ = require('jquery');
   var List = require('content/List');
   var ContactManager = require('main/ContactManager');
-  var ShowController = require('content/ShowController');
   var Loading = require('common/Loading');
 
   return {
@@ -22,7 +22,6 @@ define(function(require) {
 
         contactsListView.on('childview:contact:show', function(childview, model) {
           ContactManager.trigger('contact:show', model.get('id'));
-          ShowController.showContact(model);
         });
 
         ContactManager.mainRegion.show(contactsListView);

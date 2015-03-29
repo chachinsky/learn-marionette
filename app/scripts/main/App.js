@@ -12,7 +12,7 @@ define(function(require) {
   };
 
   ContactManager.addInitializer(function() {
-    ContactsRouter.initialize();
+    ContactsRouter.initialize(ContactManager);
   });
 
   Body.render();

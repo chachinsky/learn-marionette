@@ -8,10 +8,12 @@ require.config({
     marionette: '../bower_components/marionette/lib/backbone.marionette',
     'backbone.localstorage': '../bower_components/backbone.localStorage/backbone.localStorage',
     spin: '../bower_components/spinjs/spin',
-    'jquery.spin': '../bower_components/spinjs/jquery.spin'
+    'jquery.spin': '../bower_components/spinjs/jquery.spin',
+    'backbone.syphon': '../bower_components/backbone.syphon/lib/backbone.syphon'
   },
   shim: {
     'backbone.localstorage': ['backbone'],
+    'backbone.syphon': ['backbone'],
     'jquery.spin': ['jquery']
   }
 });
