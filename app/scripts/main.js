@@ -9,12 +9,14 @@ require.config({
     'backbone.localstorage': '../bower_components/backbone.localStorage/backbone.localStorage',
     spin: '../bower_components/spinjs/spin',
     'jquery.spin': '../bower_components/spinjs/jquery.spin',
-    'backbone.syphon': '../bower_components/backbone.syphon/lib/backbone.syphon'
+    'backbone.syphon': '../bower_components/backbone.syphon/lib/backbone.syphon',
+    'jquery.ui': '../bower_components/jquery-ui/jquery-ui'
   },
   shim: {
     'backbone.localstorage': ['backbone'],
     'backbone.syphon': ['backbone'],
-    'jquery.spin': ['jquery']
+    'jquery.spin': ['jquery'],
+    'jquery.ui': ['jquery']
   }
 });
 

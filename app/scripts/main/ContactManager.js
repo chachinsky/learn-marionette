@@ -14,7 +14,8 @@ define(function(require) {
   });
 
   ContactManager.addRegions({
-    mainRegion: '#main-region'
+    mainRegion: '#main-region',
+    dialogRegion: '#dialog-region'
   });
 
   return ContactManager;

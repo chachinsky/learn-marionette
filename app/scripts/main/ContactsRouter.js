@@ -18,8 +18,7 @@ define(function(require) {
       '': 'defaultRoute'
     },
     defaultRoute: function() {
-      this.navigate('contacts');
-      ListController.listContacts();
+      ContactManager.trigger('contacts:list');
     }
   });
 
@@ -35,6 +34,7 @@ define(function(require) {
 
     ContactManager.on('contacts:list', function() {
       ContactManager.navigate('contacts');
+      ListController.listContacts();
     });
 
     ContactManager.on('contact:show', function(id) {
@@ -58,8 +58,14 @@ define(function(require) {
 
     new ContactsRouter({
       controller: {
-        listContacts: ListController.listContacts.bind(ListController),
-        showContactById: ShowController.showContactById.bind(ShowController),
+        listContacts: function() {
+          console.log('listContacts');
+          ListController.listContacts.call(ListController);
+        },
+        showContactById: function(id) {
+          console.log('showContactById');
+          ShowController.showContactById.call(ShowController, id);
+        },
         editContact: EditController.editContactById.bind(EditController)
       }
     });

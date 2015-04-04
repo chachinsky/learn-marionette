@@ -25,5 +25,8 @@
     "json2": "*",
     "backbone.syphon": "~0.6.0",
     "spinjs": "~2.0.2"
+  },
+  "devDependencies": {
+    "jquery-ui": "~1.11.4"
   }
 }

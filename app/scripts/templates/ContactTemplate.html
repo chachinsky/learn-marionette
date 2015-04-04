@@ -1,10 +1,12 @@
 <td>{{firstName}}</td>
 <td>{{lastName}}</td>
 <td>
-<a id='show-btn' href="#contacts/{{id}}" class="btn btn-sm btn-primary">
-	<i class="glyphicon glyphicon-eye-open"></i>
-	Show
-</a>
+  <a id='show-btn' href="#contacts/{{id}}" class="btn btn-sm btn-primary">
+    <i class="glyphicon glyphicon-eye-open"></i> Show
+  </a>
+  <a id='edit-btn' href="#contacts/{{id}}/edit" class="btn btn-sm btn-success">
+    <i class="glyphicon glyphicon-pencil"></i> Edit
+  </a>
   <button id='del-btn' class="btn btn-danger btn-sm">
     <i class="glyphicon glyphicon-remove"></i> Delete
   </button>

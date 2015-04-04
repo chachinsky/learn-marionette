@@ -10,18 +10,32 @@ define(function(require) {
     events: {
       'click': 'highlightName',
       'click #del-btn': 'deleteBtn',
-      'click #show-btn': 'showClicked'
+      'click #show-btn': 'showClicked',
+      'click #edit-btn': 'editClicked'
     },
     highlightName: function() {
       this.$el.toggleClass('warning');
     },
-    deleteBtn: function(){
+    deleteBtn: function() {
       this.trigger('contact:delete', this.model);
       return false;
     },
-    showClicked: function(){
+    showClicked: function() {
       this.trigger('contact:show', this.model);
       return false;
+    },
+    editClicked: function(e) {
+      e.stopPropagation();
+      this.trigger('contact:edit', this.model);
+      return false;
+    },
+    flash: function(cssClass) {
+      var $view = this.$el;
+      $view.hide().toggleClass(cssClass).fadeIn(800, function() {
+        setTimeout(function() {
+          $view.toggleClass(cssClass);
+        }, 500);
+      });
     }
   });
 
