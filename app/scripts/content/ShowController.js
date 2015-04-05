@@ -2,8 +2,8 @@ define(function(require) {
   'use strict';
 
   var $ = require('jquery');
-  var ShowContact = require('content/ShowContact');
-  var ShowMissingContact = require('content/ShowMissingContact');
+  var ShowContact = require('content/views/ShowContact');
+  var ShowMissingContact = require('content/views/ShowMissingContact');
   var ContactManager = require('main/ContactManager');
   var Loading = require('common/Loading');
 

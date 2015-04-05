@@ -3,7 +3,7 @@ define(function(require) {
 
   var Marionette = require('marionette');
   var Mustache = require('mustache');
-  var Body = require('content/Body');
+  var Body = require('content/views/Body');
   var ContactManager = require('main/ContactManager');
   var ContactsRouter = require('main/ContactsRouter');
 

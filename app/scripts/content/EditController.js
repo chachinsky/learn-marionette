@@ -3,12 +3,12 @@ define(function(require) {
 
   var $ = require('jquery');
   var Loading = require('common/Loading');
-  var ShowMissingContact = require('content/ShowMissingContact');
-  var EditContact = require('content/EditContact');
+  var ShowMissingContact = require('content/views/ShowMissingContact');
+  var EditContactView = require('content/views/EditContactView');
   var ContactManager = require('main/ContactManager');
 
   function createEditContactView(contact) {
-    var view = new EditContact({
+    var view = new EditContactView({
       model: contact
     });
 

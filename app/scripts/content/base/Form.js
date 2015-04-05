@@ -8,14 +8,15 @@ define(function(require) {
   var Marionette = require('marionette');
   var Templates = require('templates/Templates');
 
-  var EditContact = Marionette.ItemView.extend({
+  var FormView = Marionette.ItemView.extend({
     template: Templates.ContactForm,
     events: {
       'click button.js-submit': 'submitClicked'
     },
-    initialize: function() {
-      this.title = 'Edit ' + this.model.get('firstName') +
-        ' ' + this.model.get('lastName');
+    submitClicked: function() {
+      var data = Backbone.Syphon.serialize(this);
+      this.trigger('form:submit', data);
+      return false;
     },
     onRender: function() {
       if (!this.options.asModal) {
@@ -33,11 +34,6 @@ define(function(require) {
           width: 'auto'
         });
       }
-    },
-    submitClicked: function() {
-      var data = Backbone.Syphon.serialize(this);
-      this.trigger('form:submit', data);
-      return false;
     },
     onFormDataInvalid: function(errors) {
 
@@ -63,6 +59,5 @@ define(function(require) {
     }
   });
 
-
-  return EditContact;
+  return FormView;
 });

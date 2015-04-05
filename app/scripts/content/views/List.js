@@ -4,30 +4,34 @@ define(function(require) {
   var Marionette = require('marionette');
   var Templates = require('templates/Templates');
 
+  var Layout = Marionette.LayoutView.extend({
+    template: Templates.ContactListLayout,
+    regions: {
+      panelRegion: '#panel-region',
+      contactsRegion: '#contacts-region'
+    }
+  });
+
+  var Panel = Marionette.ItemView.extend({
+    template: Templates.ContactListPanel,
+    triggers: {
+      'click #new-contact': 'contact:new'
+    }
+  });
+
   var Contact = Marionette.ItemView.extend({
     tagName: 'tr',
     template: Templates.Contact,
+    triggers: {
+      'click #del-btn': 'contact:delete',
+      'click #show-btn': 'contact:show',
+      'click #edit-btn': 'contact:edit'
+    },
     events: {
       'click': 'highlightName',
-      'click #del-btn': 'deleteBtn',
-      'click #show-btn': 'showClicked',
-      'click #edit-btn': 'editClicked'
     },
     highlightName: function() {
       this.$el.toggleClass('warning');
-    },
-    deleteBtn: function() {
-      this.trigger('contact:delete', this.model);
-      return false;
-    },
-    showClicked: function() {
-      this.trigger('contact:show', this.model);
-      return false;
-    },
-    editClicked: function(e) {
-      e.stopPropagation();
-      this.trigger('contact:edit', this.model);
-      return false;
     },
     flash: function(cssClass) {
       var $view = this.$el;
@@ -49,7 +53,9 @@ define(function(require) {
 
   return {
     Contact: Contact,
-    Contacts: Contacts
+    Contacts: Contacts,
+    Layout: Layout,
+    Panel: Panel
   };
 
 });
